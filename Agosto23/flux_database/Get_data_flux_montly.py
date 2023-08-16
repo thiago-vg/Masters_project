@@ -380,7 +380,7 @@ feer_data = pd.read_csv(data[0])
 
 outdir  = datadir+'output/'
 # outfile = outdir+'goes_results_box_emission_rate_test_cerrado_cluster_v7.csv'
-outfile = outdir+'goes_data_emission_rate_amazon_definitive_box_flux_montly.csv'
+outfile = outdir+'goes_data_emission_rate_amazon_definitive_box_flux_montly_test.csv'
 ###############################################################################
 
 #Define constants
@@ -490,10 +490,10 @@ for mes_num in range(1, 13):
 # Converter a matriz para um array do NumPy
 matriz_meses_dias = np.array(matriz_meses_dias)
 
-for m in range(7,8):
+for m in range(7,9):
     #For every define start and end year, days and hours
     start_year,end_year,start_day,end_day,start_hour,end_our = ano,ano,\
-    matriz_meses_dias[m,1][0],matriz_meses_dias[m,1][-1],0,24
+    matriz_meses_dias[m,1][0],matriz_meses_dias[m,1][1],15,16
     
     #List the data correspond to the start/end definition
     data_list = get_files(start_year,end_year,start_day,end_day,start_hour,end_our)
@@ -539,8 +539,8 @@ for m in range(7,8):
     # for linha in zip(array_year,array_julian,array_hhmm,array_code,array_lat,array_lon,array_mean_flux,array_mean_TPM,array_CO2_flux,array_CO_flux,array_CH4_flux):
     # outfn.writelines(linha)
 
-    #Close the file    
-    outfn.close()
+#Close the file    
+outfn.close()
 # print(matriz_meses_dias[3,1][0])
 # print(matriz_meses_dias[3,1][-1])
 # start_year,end_year,start_day,end_day,start_hour,end_our = 2020,2020,232,233,0,24

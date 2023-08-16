@@ -87,7 +87,7 @@ def TPM_mapping_v1_2method(dados_emission, filename, year):
     # X, Y = np.meshgrid(lats, lons)
 
     pyplot.clf()
-    fig, ax = pyplot.subplots()
+    fig, ax = pyplot.subplots(figsize=(6, 3))
 
     extend = np.min(lons), np.max(lons),  np.min(lats), np.max(lats)
     # pyplot.pcolormesh(Y, X, matrix_TPM)
@@ -124,9 +124,9 @@ def TPM_mapping_v2_2method(dados_emission, filename, year):
     column1 = dados_emission.iloc[:, pos1]
     year = np.array(column1.dropna(), dtype=pd.Series)
 
-    pos3 = header.index('month')
-    column3 = dados_emission.iloc[:, pos3]
-    month = np.array(column3.dropna(), dtype=pd.Series)
+    # pos3 = header.index('month')
+    # column3 = dados_emission.iloc[:, pos3]
+    # month = np.array(column3.dropna(), dtype=pd.Series)
 
     pos2 = header.index('central_lat')
     column2 = dados_emission.iloc[:, pos2]
@@ -166,7 +166,8 @@ def TPM_mapping_v2_2method(dados_emission, filename, year):
     # X, Y = np.meshgrid(lats, lons)
 
     pyplot.clf()
-    fig, ax = pyplot.subplots()
+    fig, ax = pyplot.subplots(figsize=(6, 3))
+    
 
     extend = np.min(lons), np.max(lons),  np.min(lats), np.max(lats)
     # pyplot.pcolormesh(Y, X, matrix_TPM)
@@ -181,13 +182,16 @@ def TPM_mapping_v2_2method(dados_emission, filename, year):
 
     ax.set_xlabel('lon')
     ax.set_ylabel('lat')
-    Title = 'Year: {}, Month: {}'.format(np.unique(year)[0],np.unique(month)[0])
+    Title = 'Ano: {}, Mês: {}'.format(np.unique(year)[0],8)
     ax.set_title(Title)
     
     
 
-    cb = pyplot.colorbar(im, label='Montly  TPM (kg/km^2.s)')
-    cb.formatter.set_powerlimits((0, 0))
+    cb = pyplot.colorbar(im, label='Fluxo mensal  TPM (kg/km^2.s)',format='%.0e')
+    cb.ax.tick_params(labelsize=10)
+    
+    # cb = pyplot.colorbar(im, label=Label, format='%.0e')  # Formatar para notação científica sem casas decimais
+    # cb.ax.tick_params(labelsize=10)  # Ajustar o tamanho dos números na barra de cores
 
     # ax.set_aspect(0.01)
 
@@ -207,9 +211,9 @@ def CO2_mapping_v2_2method(dados_emission, filename, year):
     column1 = dados_emission.iloc[:, pos1]
     year = np.array(column1.dropna(), dtype=pd.Series)
 
-    pos3 = header.index('month')
-    column3 = dados_emission.iloc[:, pos3]
-    month = np.array(column3.dropna(), dtype=pd.Series)
+    # pos3 = header.index('month')
+    # column3 = dados_emission.iloc[:, pos3]
+    # month = np.array(column3.dropna(), dtype=pd.Series)
 
     pos2 = header.index('central_lat')
     column2 = dados_emission.iloc[:, pos2]
@@ -249,7 +253,7 @@ def CO2_mapping_v2_2method(dados_emission, filename, year):
     # X, Y = np.meshgrid(lats, lons)
 
     pyplot.clf()
-    fig, ax = pyplot.subplots()
+    fig, ax = pyplot.subplots(figsize=(6, 3))
 
     extend = np.min(lons), np.max(lons),  np.min(lats), np.max(lats)
     # pyplot.pcolormesh(Y, X, matrix_TPM)
@@ -264,13 +268,13 @@ def CO2_mapping_v2_2method(dados_emission, filename, year):
 
     ax.set_xlabel('lon')
     ax.set_ylabel('lat')
-    Title = 'Year: {}, Month: {}'.format(np.unique(year)[0],np.unique(month)[0])
+    Title = 'Ano: {}, Mês: {}'.format(np.unique(year)[0],8)
     ax.set_title(Title)
     
     
 
-    cb = pyplot.colorbar(im, label='Montly  CO2 (kg/km^2.s)')
-    cb.formatter.set_powerlimits((0, 0))
+    cb = pyplot.colorbar(im, label='Fluxo mensal  CO2 (kg/km^2.s)',format='%.0e')
+    cb.ax.tick_params(labelsize=10)
 
     # ax.set_aspect(0.01)
 
@@ -290,9 +294,9 @@ def CO_mapping_v2_2method(dados_emission, filename, year):
     column1 = dados_emission.iloc[:, pos1]
     year = np.array(column1.dropna(), dtype=pd.Series)
 
-    pos3 = header.index('month')
-    column3 = dados_emission.iloc[:, pos3]
-    month = np.array(column3.dropna(), dtype=pd.Series)
+    # pos3 = header.index('month')
+    # column3 = dados_emission.iloc[:, pos3]
+    # month = np.array(column3.dropna(), dtype=pd.Series)
 
     pos2 = header.index('central_lat')
     column2 = dados_emission.iloc[:, pos2]
@@ -332,7 +336,7 @@ def CO_mapping_v2_2method(dados_emission, filename, year):
     # X, Y = np.meshgrid(lats, lons)
 
     pyplot.clf()
-    fig, ax = pyplot.subplots()
+    fig, ax = pyplot.subplots(figsize=(6, 3))
 
     extend = np.min(lons), np.max(lons),  np.min(lats), np.max(lats)
     # pyplot.pcolormesh(Y, X, matrix_CO)
@@ -347,13 +351,13 @@ def CO_mapping_v2_2method(dados_emission, filename, year):
 
     ax.set_xlabel('lon')
     ax.set_ylabel('lat')
-    Title = 'Year: {}, Month: {}'.format(np.unique(year)[0],np.unique(month)[0])
+    Title = 'Ano: {}, Mês: {}'.format(np.unique(year)[0],8)
     ax.set_title(Title)
     
     
 
-    cb = pyplot.colorbar(im, label='Montly  CO (kg/km^2.s)')
-    cb.formatter.set_powerlimits((0, 0))
+    cb = pyplot.colorbar(im, label='Fluxo mensal  CO (kg/km^2.s)',format='%.0e')
+    cb.ax.tick_params(labelsize=10)
 
     # ax.set_aspect(0.01)
 
@@ -373,9 +377,9 @@ def CH4_mapping_v2_2method(dados_emission, filename, year):
     column1 = dados_emission.iloc[:, pos1]
     year = np.array(column1.dropna(), dtype=pd.Series)
 
-    pos3 = header.index('month')
-    column3 = dados_emission.iloc[:, pos3]
-    month = np.array(column3.dropna(), dtype=pd.Series)
+    # pos3 = header.index('month')
+    # column3 = dados_emission.iloc[:, pos3]
+    # month = np.array(column3.dropna(), dtype=pd.Series)
 
     pos2 = header.index('central_lat')
     column2 = dados_emission.iloc[:, pos2]
@@ -415,7 +419,7 @@ def CH4_mapping_v2_2method(dados_emission, filename, year):
     # X, Y = np.meshgrid(lats, lons)
 
     pyplot.clf()
-    fig, ax = pyplot.subplots()
+    fig, ax = pyplot.subplots(figsize=(6, 3))
 
     extend = np.min(lons), np.max(lons),  np.min(lats), np.max(lats)
     # pyplot.pcolormesh(Y, X, matrix_CH4)
@@ -430,13 +434,13 @@ def CH4_mapping_v2_2method(dados_emission, filename, year):
 
     ax.set_xlabel('lon')
     ax.set_ylabel('lat')
-    Title = 'Year: {}, Month: {}'.format(np.unique(year)[0],np.unique(month)[0])
+    Title = 'Ano: {}, Mês: {}'.format(np.unique(year)[0],8)
     ax.set_title(Title)
     
     
 
-    cb = pyplot.colorbar(im, label='Montly  CH4 (kg/km^2.s)')
-    cb.formatter.set_powerlimits((0, 0))
+    cb = pyplot.colorbar(im, label='Fluxo mensal  CH4 (kg/km^2.s)',format='%.0e')
+    cb.ax.tick_params(labelsize=10)
 
     # ax.set_aspect(0.01)
 
